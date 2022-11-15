@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   android: circleci/android@2.1.2
-  flutter-orb: circleci/flutter@1.1.0 
+  flutter-orb: tadashi0713/flutter-orb@1.2.1 
   ruby: circleci/ruby@1.8.0
   macos: circleci/macos@2.3.1
 
@@ -11,10 +11,10 @@ jobs:
     executor:
       name: android/android-machine
       resource-class: xlarge
-      tag: 2022.03.1 #TODO: Change tag
     steps:
       - checkout
       - flutter-orb/install_sdk_and_pub:
+          version: 2.2.3
           cache-version: machine
           flutter_version: 3.3.8
       - android/create-avd:
@@ -34,10 +34,10 @@ jobs:
     executor:
       name: android/android-docker
       resource-class: xlarge
-      tag: 2022.03.1 #TODO: Change tag
     steps:
       - checkout
       - flutter-orb/install_sdk_and_pub:
+          version: 2.2.3
           cache-version: docker
           flutter_version: 3.3.8
       - flutter-orb/install_android_gradle
@@ -86,9 +86,9 @@ workflows:
   test_and_distribute:
     jobs:
       - flutter-orb/lint:
-          version: 2.10.3
+          version: 2.2.3
       - flutter-orb/unit_test:
-          version: 2.10.3
+          version: 2.2.3
       - integration_test_android
       - distribute_android:
           context: 
