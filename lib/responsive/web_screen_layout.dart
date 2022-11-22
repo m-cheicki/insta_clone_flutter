@@ -7,7 +7,7 @@ class WebeScreenLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Mobile layout'),
+        child: Text('Web layout'),
       ),
     );
   }
